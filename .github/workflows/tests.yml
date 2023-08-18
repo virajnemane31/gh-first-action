@@ -12,5 +12,7 @@ jobs:
           node-version: 18
       - name: Install Dependencies
         run: npm ci
+        working-directory: ./second-action-sub
       - name: Run tests
         run: npm test
+        working-directory: ./second-action-sub
