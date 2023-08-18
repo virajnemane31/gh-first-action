@@ -17,6 +17,7 @@ jobs:
         run: npm test
         working-directory: ./second-action-sub
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
