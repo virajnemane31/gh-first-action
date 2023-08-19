@@ -1,7 +1,7 @@
 name: Lint Test Deploy
 on: push
 jobs:
-    LintTest:
+    Lint:
         runs-on: ubuntu-latest
         steps:
           - name: Clone Repo
@@ -12,8 +12,26 @@ jobs:
           - name: Lint
             run: npm run lint
             working-directory: fourth-exercise
+    Test:
+        needs: Lint
+        runs-on: ubuntu-latest
+        steps:
+          - name: Clone Repo
+            uses: actions/checkout@v3
+          - name: Install Dependencies
+            run: npm ci
+            working-directory: fourth-exercise
           - name: Test
             run: npm run test
+            working-directory: fourth-exercise
+    Build:
+        needs: Test
+        runs-on: ubuntu-latest
+        steps:
+          - name: Clone Repo
+            uses: actions/checkout@v3
+          - name: Install Dependencies
+            run: npm ci
             working-directory: fourth-exercise
           - name: Build
             run: npm run build
