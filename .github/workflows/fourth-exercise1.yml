@@ -9,9 +9,6 @@ jobs:
           - name: Install Dependencies
             run: npm ci
             working-directory: fourth-exercise
-          - name: Install Dependencies Again
-            run: npm install -g eslint vitest vite jsdom
-            working-directory: fourth-exercise
           - name: Lint
             run: npm run lint
             working-directory: fourth-exercise
