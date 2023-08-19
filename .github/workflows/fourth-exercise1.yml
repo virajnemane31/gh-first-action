@@ -1,0 +1,21 @@
+name: Lint Test Deploy
+on: push
+jobs:
+    LintTest:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Clone Repo
+            uses: actions/checkout@v3
+          - name: Install Dependencies
+            uses: actions/setup-node@v3
+            with: 
+              node-version: '18'
+          - name: Lint
+            run: eslint --ext .jsx --fix src
+            working-directory: fourth-exercise
+          - name: Test
+            run: vitest run
+            working-directory: fourth-exercise
+          - name: Build
+            run: vite build
+            working-directory: fourth-exercise
