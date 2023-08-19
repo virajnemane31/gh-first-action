@@ -7,7 +7,7 @@ jobs:
           - name: Clone Repo
             uses: actions/checkout@v3
           - name: Install Dependencies
-            run: npm install -g eslint vitest vite
+            run: npm install -g eslint vitest vite eslint-plugin-react
           - name: Lint
             run: eslint --ext .jsx --fix src
             working-directory: fourth-exercise
